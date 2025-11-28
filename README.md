@@ -8,6 +8,9 @@ Compilation of Cursor rules
 
 https://github.com/eyaltoledano/claude-task-master/tree/main/.cursor/rules
 
+https://dev.to/dpaluy/mastering-cursor-rules-a-developers-guide-to-smart-ai-integration-1k65
+
+
 
 
 
