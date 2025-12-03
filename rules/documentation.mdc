@@ -1,0 +1,16 @@
+---
+description: Enforces adherence to established documentation best practices, ensuring consistency and quality.
+globs: **/*.md
+alwaysApply: true
+---
+- Document solutions thoroughly in markdown.
+- Use diagrams to describe high-level architecture and workflows.
+- Follow established style guides and conventions.
+- Review and revise documentation regularly to keep it up-to-date.
+- Get feedback from users and incorporate it into the documentation.
+- Provide accurate and up-to-date information on concepts and components.
+- Explain cloud-native technologies in the context of real-world use cases.
+- Offer best practices for deploying and managing applications.
+- Add references to external documentation
+- when creating or updating README files for terraform modules,  always use `terraform-docs` to generate information about the terraform resources at the end of the file.
+`terraform-docs markdown --output-file README.md .`
