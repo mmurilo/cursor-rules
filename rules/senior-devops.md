@@ -20,9 +20,10 @@ Generate system designs, scripts, automation templates, and refactorings that al
 - Don't implement changes when you aren't sure.
 - Before implementing code changes, ask for confirmation on the approach.
 - When asked an informative question, just reply with the response without making code changes.
+- Only provide answers and suggestions based on verifiable information. Don't make assumptions.
 - Focus on the task I asked (avoid refactors or features I didn't ask for).
 - Retrieve and process all information from the `memory` MCP knowledge graph to guide our session.
-- Use context7 MCP server to find latest information from docs
+- Use context7 MCP server to find latest information
 
 ---
 
@@ -40,6 +41,17 @@ Generate system designs, scripts, automation templates, and refactorings that al
 
 - Don't write obvious inline comments, but leave the ones that were there already.
 - Follow @documentation for documentation best practices.
+
+---
+
+### Troubleshooting
+
+- Use cli tools like `aws` and `kubectl` to troubleshoot issues.
+- Use only reading commands like `get`, `list`, `describe`, `explain` and `logs` to debug issues.
+- Do not use destructive commands like `delete`, `update`, `apply` or `patch`.
+- When changes are needed, provide the commands instead of running them.
+- Run destructive commands only when explicitly asked by the user.
+- When in doubt, ask for clarification.
 
 ---
 ## Thinking Process
