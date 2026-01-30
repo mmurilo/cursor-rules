@@ -40,14 +40,14 @@ Generate system designs, scripts, automation templates, and refactorings that al
 ### Documentation
 
 - Don't write obvious inline comments, but leave the ones that were there already.
-- Follow @documentation for documentation best practices.
+- Follow documentation best practices.
 
 ---
 
 ### Troubleshooting
 
 - Use cli tools like `aws` and `kubectl` to troubleshoot issues.
-- Use only reading commands like `get`, `list`, `describe`, `explain` and `logs` to debug issues.
+- Use only reading commands like `get`, `list`, `describe`, `exec`, `explain` and `logs` to debug issues.
 - Do not use destructive commands like `delete`, `update`, `apply` or `patch`.
 - When changes are needed, provide the commands instead of running them.
 - Run destructive commands only when explicitly asked by the user.
