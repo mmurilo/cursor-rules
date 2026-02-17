@@ -1,0 +1,42 @@
+---
+description: "Prompt Improver — evaluates every user prompt for clarity. Delegates to the prompt-improver subagent for vague prompts."
+alwaysApply: true
+---
+
+# Prompt Evaluation
+
+Evaluate every user prompt for clarity before execution. If vague, delegate to the `prompt-improver` subagent.
+
+## Bypass Prefixes
+
+Skip evaluation entirely for these prefixes:
+
+- **`*` prefix**: Strip the `*` and proceed with the rest of the prompt as-is.
+- **`/` prefix**: Slash commands. Pass through unchanged.
+- **`#` prefix**: Memory/note commands. Pass through unchanged.
+
+## Evaluation
+
+For all other prompts, evaluate clarity using conversation history and available context.
+
+Use the **4-dimension check** (Target, Action, Criteria, Context):
+
+| Dimension   | Pass ✅                        | Fail ❌              |
+|-------------|-------------------------------|----------------------|
+| **Target**  | Specific file/function/system | "Fix the bug"        |
+| **Action**  | Clear desired change          | "Make it better"     |
+| **Criteria**| Objectively verifiable        | "Improve quality"    |
+| **Context** | Enough background to act      | No context at all    |
+
+**PROCEED IMMEDIATELY if:**
+- 4/4 pass — Detailed/specific OR you have sufficient context OR can infer intent
+- 3/4 pass — Check conversation history and open files for the missing piece. If found, proceed.
+
+**DELEGATE TO SUBAGENT if genuinely vague (≤2/4 pass):**
+- If vague:
+  1. Preface with brief note: "Hey! The Prompt Improver flagged your prompt as a bit vague because [specific reason: ambiguous scope/missing context/unclear target/etc]."
+  2. Delegate to the **`prompt-improver`** subagent, passing the original prompt and a summary of why it was flagged
+- The subagent will handle research, question generation, clarification, and execution
+- Trust user intent by default. Check conversation history before delegating.
+
+If clear, proceed with the original request. If vague, delegate to the subagent.

@@ -1,0 +1,32 @@
+---
+description: "Prompt Improver — evaluates every user prompt for clarity before execution. Invokes the prompt-improver skill for vague prompts."
+alwaysApply: false
+---
+
+# Prompt Evaluation
+
+Evaluate every user prompt for clarity. This rule is the trigger — all enrichment logic lives in the `prompt-improver` skill.
+
+## Bypass Prefixes
+
+Skip evaluation entirely for these prefixes:
+
+- **`*` prefix**: Strip the `*` and proceed with the rest of the prompt as-is.
+- **`/` prefix**: Slash commands. Pass through unchanged.
+- **`#` prefix**: Memory/note commands. Pass through unchanged.
+
+## Evaluation
+
+For all other prompts, evaluate clarity using conversation history and available context.
+
+**PROCEED IMMEDIATELY if:**
+- Detailed/specific OR you have sufficient context OR can infer intent
+
+**ONLY USE SKILL if genuinely vague** (e.g., "fix the bug" with no context):
+- If vague:
+  1. First, preface with brief note: "Hey! The Prompt Improver flagged your prompt as a bit vague because [specific reason: ambiguous scope/missing context/unclear target/etc]."
+  2. Then use the `prompt-improver` skill to research and generate clarifying questions
+- The skill will guide you through research, question generation, and execution
+- Trust user intent by default. Check conversation history before using the skill.
+
+If clear, proceed with the original request. If vague, invoke the skill.
